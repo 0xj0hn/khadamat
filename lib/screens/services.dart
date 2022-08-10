@@ -14,106 +14,155 @@ class ServicesPage extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          Padding(
-            padding: EdgeInsets.all(30),
-            child: CustomedButton(
-              padding: EdgeInsets.all(24),
-              child: Text("تشکیل پرونده"),
-              onPressed: () {},
-            ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(15, 8, 15, 8),
+                  child: CustomedButton(
+                    padding: EdgeInsets.all(30),
+                    child: Text("تشکیل پرونده"),
+                    onPressed: () {},
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(15, 8, 15, 8),
+                  child: CustomedButton(
+                    padding: EdgeInsets.all(30),
+                    child: Text("ثبت‌نام کد اقتصادی"),
+                    onPressed: () {},
+                  ),
+                ),
+              ),
+            ],
           ),
-          Padding(
-            padding: EdgeInsets.all(30),
-            child: CustomedButton(
-              padding: EdgeInsets.all(24),
-              child: Text("ثبت‌نام کد اقتصادی"),
-              onPressed: () {},
-            ),
+          Row(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(15, 8, 15, 8),
+                  child: CustomedButton(
+                    padding: EdgeInsets.all(30),
+                    child: Text("تحریر دفاتر"),
+                    onPressed: () {},
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(15, 8, 15, 8),
+                  child: CustomedButton(
+                    padding: EdgeInsets.all(30),
+                    child: Text("ارسال اظهارنامه"),
+                    onPressed: () {},
+                  ),
+                ),
+              ),
+            ],
           ),
-          Padding(
-            padding: EdgeInsets.all(30),
-            child: CustomedButton(
-              padding: EdgeInsets.all(24),
-              child: Text("تحریر دفاتر"),
-              onPressed: () {},
-            ),
+          Row(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(15, 8, 15, 8),
+                  child: CustomedButton(
+                    padding: EdgeInsets.all(30),
+                    child: Text("ارسال اظهارنامه ارزش‌افزوده"),
+                    onPressed: () {},
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(15, 8, 15, 8),
+                  child: CustomedButton(
+                    padding: EdgeInsets.all(30),
+                    child: Text("ارسال صورت معاملات فصلی"),
+                    onPressed: () {},
+                  ),
+                ),
+              ),
+            ],
           ),
-          Padding(
-            padding: EdgeInsets.all(30),
-            child: CustomedButton(
-              padding: EdgeInsets.all(24),
-              child: Text("ارسال اظهارنامه"),
-              onPressed: () {},
-            ),
+          Row(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(15, 8, 15, 8),
+                  child: CustomedButton(
+                    padding: EdgeInsets.all(30),
+                    child: Text("تفسیر گزارش رسیدگی"),
+                    onPressed: () {},
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(15, 8, 15, 8),
+                  child: CustomedButton(
+                    padding: EdgeInsets.all(30),
+                    child: Text("حضور جلسات رسیدگی"),
+                    onPressed: () {},
+                  ),
+                ),
+              ),
+            ],
           ),
-          Padding(
-            padding: EdgeInsets.all(30),
-            child: CustomedButton(
-              padding: EdgeInsets.all(24),
-              child: Text("ارسال اظهارنامه ارزش‌افزوده"),
-              onPressed: () {},
-            ),
+          Row(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(15, 8, 15, 8),
+                  child: CustomedButton(
+                    padding: EdgeInsets.all(30),
+                    child: Text("پیگیری اعتراضات"),
+                    onPressed: () {},
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(15, 8, 15, 8),
+                  child: CustomedButton(
+                    padding: EdgeInsets.all(30),
+                    child: Text("نقل و انتقال سهام"),
+                    onPressed: () {},
+                  ),
+                ),
+              ),
+            ],
           ),
-          Padding(
-            padding: EdgeInsets.all(30),
-            child: CustomedButton(
-              padding: EdgeInsets.all(24),
-              child: Text("ارسال صورت معاملات فصلی"),
-              onPressed: () {},
-            ),
+          Row(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(15, 8, 15, 8),
+                  child: CustomedButton(
+                    padding: EdgeInsets.all(30),
+                    child: Text("ثبت اعتراضات و تهیه لایحه خاص"),
+                    onPressed: () {},
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(15, 8, 15, 8),
+                  child: CustomedButton(
+                    padding: EdgeInsets.all(30),
+                    child: Text("مشاوره رایگان"),
+                    onPressed: () {},
+                  ),
+                ),
+              ),
+            ],
           ),
-          Padding(
-            padding: EdgeInsets.all(30),
-            child: CustomedButton(
-              padding: EdgeInsets.all(24),
-              child: Text("تفسیر گزارش رسیدگی"),
-              onPressed: () {},
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(30),
-            child: CustomedButton(
-              padding: EdgeInsets.all(24),
-              child: Text("حضور در جلسات رسیدگی"),
-              onPressed: () {},
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(30),
-            child: CustomedButton(
-              padding: EdgeInsets.all(24),
-              child: Text("پیگیری اعتراضات"),
-              onPressed: () {},
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(30),
-            child: CustomedButton(
-              padding: EdgeInsets.all(24),
-              child: Text("نقل و انتقال سهام"),
-              onPressed: () {},
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(30),
-            child: CustomedButton(
-              padding: EdgeInsets.all(24),
-              child: Text("ثبت اعتراضات و تهیهٔ لایحه خاص"),
-              onPressed: () {},
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(30),
-            child: CustomedButton(
-              padding: EdgeInsets.all(24),
-              child: Text("مشاوره رایگان"),
-              onPressed: () {},
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(60),
-            child: CustomedText(
-              title: "نکات آموزش: دانم که ندانم",
+          Center(
+            child: Text(
+              "کلیه اشخاص حقیقی تابع ایران",
+              style: TextStyle(color: Colors.grey),
             ),
           ),
         ],

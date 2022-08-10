@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:TexBan/widgets/appBar.dart';
 import 'package:TexBan/widgets/customedText.dart';
 import 'package:TexBan/widgets/customedTextField.dart';
 
 class CreateFilePage extends StatelessWidget {
-  String? title;
-  CreateFilePage({Key? key, this.title = ""}) : super(key: key);
+  String? title = Get.arguments;
+  CreateFilePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +36,12 @@ class CreateFilePage extends StatelessWidget {
               label: "شماره تماس",
               icon: Icon(Icons.phone),
               controller: phone,
+              keyboardType: TextInputType.phone,
+              maxLength: 10,
+              helper: "نمونه: 9380000000",
+              inputFormatters: [
+                FilteringTextInputFormatter.deny(RegExp(r"[a-z]|[A-Z]")),
+              ],
             ),
           ),
           Padding(
@@ -54,9 +61,10 @@ class CreateFilePage extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(60),
+            padding: EdgeInsets.fromLTRB(60, 25, 60, 25),
             child: CustomedText(
-              title: "نکات آموزش: دانم که ندانم",
+              title:
+                  "کلیه مالکین اعم از اشخاص حقیقی و حقوقی نسبت به اموال و املاک خود واقع در ایران مشمول مالیات می‌باشند.",
             ),
           ),
         ],

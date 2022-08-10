@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CustomedTextField extends StatelessWidget {
   @override
@@ -12,6 +13,8 @@ class CustomedTextField extends StatelessWidget {
   int maxLines;
   TextInputType? keyboardType;
   Function(String)? onChanged;
+  List<TextInputFormatter>? inputFormatters;
+  int? maxLength;
   CustomedTextField({
     this.label,
     this.style,
@@ -22,6 +25,9 @@ class CustomedTextField extends StatelessWidget {
     this.dir = TextDirection.rtl,
     this.maxLines = 1,
     this.onChanged,
+    this.keyboardType,
+    this.inputFormatters,
+    this.maxLength,
   });
 
   Widget build(BuildContext context) {
@@ -38,8 +44,10 @@ class CustomedTextField extends StatelessWidget {
       textDirection: dir,
       onChanged: onChanged,
       maxLines: maxLines,
+      maxLength: maxLength,
+      inputFormatters: inputFormatters,
       decoration: InputDecoration(
-        suffixIcon: icon,
+        icon: icon,
         labelStyle: style,
         labelText: label,
         helperText: helper,
@@ -79,7 +87,7 @@ class CustomedTextFormField extends StatelessWidget {
       textAlign: TextAlign.right,
       controller: controller,
       decoration: InputDecoration(
-        suffixIcon: icon,
+        icon: icon,
         //hintText: "نام کاربری خود را وارد کنید",
         labelText: label,
         helperText:

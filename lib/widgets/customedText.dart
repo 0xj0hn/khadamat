@@ -9,10 +9,19 @@ class CustomedText extends StatelessWidget {
     return TextButton(
       onPressed: () {},
       style: ButtonStyle(
-          shape: MaterialStateProperty.all(RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(8))))),
+        shape: MaterialStateProperty.all(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(8),
+            ),
+          ),
+        ),
+      ),
       child: Container(
-        child: Text(title),
+        child: Text(
+          title,
+          style: TextStyle(fontSize: 13),
+        ),
       ),
     );
   }
