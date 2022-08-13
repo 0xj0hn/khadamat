@@ -1,5 +1,7 @@
+import 'package:TexBan/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_polygon/flutter_polygon.dart';
+import 'package:get/get.dart';
 
 class RPSCustomPainter extends CustomPainter {
   @override
@@ -60,7 +62,7 @@ class CustomButtonItem extends StatelessWidget {
   final title;
   Function()? onPressed;
   CustomButtonItem({this.title, this.onPressed});
-
+  ThemeX controller = Get.find();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -68,11 +70,9 @@ class CustomButtonItem extends StatelessWidget {
       width: 100,
       child: ElevatedButton(
         onPressed: onPressed,
-        child: Center(
-          child: Text(
-            title,
-            textAlign: TextAlign.center,
-          ),
+        child: Text(
+          title,
+          textAlign: TextAlign.center,
         ),
         style: ButtonStyle(
           shape: MaterialStateProperty.all(

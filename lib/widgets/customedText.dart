@@ -1,9 +1,11 @@
+import 'package:TexBan/utils/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomedText extends StatelessWidget {
   final title;
-  const CustomedText({Key? key, this.title}) : super(key: key);
-
+  CustomedText({Key? key, this.title});
+  ThemeX controller = Get.find();
   @override
   Widget build(BuildContext context) {
     return TextButton(
@@ -20,7 +22,6 @@ class CustomedText extends StatelessWidget {
       child: Container(
         child: Text(
           title,
-          style: TextStyle(fontSize: 13),
         ),
       ),
     );

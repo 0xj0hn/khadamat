@@ -12,12 +12,15 @@ class CustomedAppBar extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
       title: Text(
         title!,
+        // style: controller.bodyTextTheme
+        //     .copyWith(fontSize: controller.fontSize!.value.toDouble() + 3),
       ),
       elevation: 0.5,
       centerTitle: true,
       actions: [
         IconButton(
           icon: Icon(Icons.bedtime_outlined),
+          tooltip: "تغییر تم",
           onPressed: () {
             Get.changeThemeMode(
               !Get.isDarkMode ? ThemeMode.dark : ThemeMode.light,

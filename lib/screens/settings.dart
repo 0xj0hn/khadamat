@@ -20,7 +20,10 @@ class SettingsPage extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
-                title: Text("تم تیره: "),
+                title: Text(
+                  "تم تیره: ",
+                  style: controller.bodyTextTheme,
+                ),
                 value: controller.thememode!.value,
                 onChanged: (val) {
                   controller.thememode?.value = val!;
@@ -34,7 +37,12 @@ class SettingsPage extends StatelessWidget {
             Divider(
               height: 3,
             ),
-            Text("فونت‌ها: "),
+            Obx(
+              () => Text(
+                "فونت‌ها: ",
+                style: controller.bodyTextTheme,
+              ),
+            ),
             Obx(
               () => RadioListTile(
                 title: Text(
@@ -70,10 +78,20 @@ class SettingsPage extends StatelessWidget {
                 groupValue: controller.fontSize!.value,
                 onChanged: (int? val) {
                   controller.fontSize!.value = val!;
+                  Get.theme.textTheme.apply(fontFamily: 'Vazir');
                   controller.addFontToHive();
                 },
               ),
             ),
+            Padding(
+              padding: EdgeInsets.all(8),
+              child: Obx(
+                () => Text(
+                  "پس از تعیین تم مورد نظر و فونت، این صفحه را ببندید تا تغییرات اعمال شود.",
+                  style: controller.bodyTextTheme,
+                ),
+              ),
+            )
           ],
         ),
       ),

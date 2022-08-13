@@ -4,12 +4,26 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 
 class ThemeX extends GetxController {
+  var font = Hive.box("font");
+  var theme = Hive.box("theme");
+  RxInt? fontSize;
+  RxBool? thememode;
+
+  onInit() {
+    super.onInit();
+    fontSize = RxInt(font.get("fontSize") ?? 14);
+    thememode = RxBool(theme.get("isDarkMode") ?? false);
+  }
+
   static final lightTheme = ThemeData(
     appBarTheme: AppBarTheme(
       systemOverlayStyle: SystemUiOverlayStyle(
-        statusBarColor: Colors.white,
-        statusBarBrightness: Brightness.light,
-      ),
+          statusBarColor: Colors.white,
+          statusBarIconBrightness: Brightness.dark,
+          systemNavigationBarColor: Colors.blue,
+          systemNavigationBarIconBrightness: Brightness.dark
+          //systemNavigationBarColor: Colors.white,
+          ),
       iconTheme: IconThemeData(color: Colors.blue),
       backgroundColor: Colors.white,
       titleTextStyle: TextStyle(
@@ -27,7 +41,7 @@ class ThemeX extends GetxController {
     appBarTheme: AppBarTheme(
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarColor: Colors.black,
-        statusBarBrightness: Brightness.dark,
+        statusBarIconBrightness: Brightness.light,
       ),
       titleTextStyle:
           TextStyle(color: Colors.amber, fontFamily: 'Yekan', fontSize: 18),
@@ -58,18 +72,16 @@ class ThemeX extends GetxController {
     accentColor: Colors.amber,
     checkboxTheme:
         CheckboxThemeData(fillColor: MaterialStateProperty.all(Colors.amber)),
+    radioTheme:
+        RadioThemeData(fillColor: MaterialStateProperty.all(Colors.amber)),
     shadowColor: Colors.grey,
     hoverColor: Colors.grey[800]!.withOpacity(0.6),
   );
-  var font = Hive.box("font");
-  var theme = Hive.box("theme");
-  RxInt? fontSize;
-  RxBool? thememode;
-  onInit() {
-    super.onInit();
-    fontSize = RxInt(font.get("fontSize") ?? 14);
-    thememode = RxBool(theme.get("isDarkMode") ?? false);
-  }
+
+  TextStyle get bodyTextTheme => Get.theme.textTheme.bodyText2!.copyWith(
+        fontSize: fontSize!.value.toDouble(),
+        color: Hive.box("theme").get("isDarkMode") ? Colors.amber : Colors.blue,
+      );
 
   addFontToHive() {
     font.put("fontSize", fontSize!.value);
