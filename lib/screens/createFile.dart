@@ -6,14 +6,14 @@ import 'package:TexBan/widgets/customedText.dart';
 import 'package:TexBan/widgets/customedTextField.dart';
 
 class CreateFilePage extends StatelessWidget {
-  String? title = Get.arguments;
-  CreateFilePage({Key? key}) : super(key: key);
+  String? title;
+  CreateFilePage({Key? key, this.title = ''}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     TextEditingController namefamily = TextEditingController();
     TextEditingController phone = TextEditingController();
-    TextEditingController txtTitle = TextEditingController(text: title!);
+    TextEditingController txtTitle = TextEditingController(text: title);
     TextEditingController txtContent = TextEditingController();
 
     return Scaffold(
@@ -37,8 +37,8 @@ class CreateFilePage extends StatelessWidget {
               icon: Icon(Icons.phone),
               controller: phone,
               keyboardType: TextInputType.phone,
-              maxLength: 10,
-              helper: "نمونه: 9380000000",
+              maxLength: 11,
+              helper: "نمونه: 09381234567",
               inputFormatters: [
                 FilteringTextInputFormatter.deny(RegExp(r"[a-z]|[A-Z]")),
               ],
@@ -50,6 +50,7 @@ class CreateFilePage extends StatelessWidget {
               label: "عنوان درخواست",
               icon: Icon(Icons.title),
               controller: txtTitle,
+              enabled: false,
             ),
           ),
           Padding(

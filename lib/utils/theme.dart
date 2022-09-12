@@ -6,13 +6,13 @@ import 'package:hive/hive.dart';
 class ThemeX extends GetxController {
   var font = Hive.box("font");
   var theme = Hive.box("theme");
-  RxInt? fontSize;
-  RxBool? thememode;
-
-  onInit() {
+  double? fontSize;
+  bool? thememode;
+  @override
+  void onInit() {
     super.onInit();
-    fontSize = RxInt(font.get("fontSize") ?? 14);
-    thememode = RxBool(theme.get("isDarkMode") ?? false);
+    fontSize = font.get("fontSize") ?? 14.0;
+    thememode = theme.get("isDarkMode") ?? false;
   }
 
   static final lightTheme = ThemeData(
@@ -32,6 +32,8 @@ class ThemeX extends GetxController {
         fontSize: 18,
       ),
     ),
+    iconTheme: IconThemeData(color: Colors.blue),
+    textTheme: TextTheme(bodyText2: TextStyle(color: Colors.blue)),
     accentColor: Colors.blue,
     fontFamily: "Yekan",
   );
@@ -66,7 +68,9 @@ class ThemeX extends GetxController {
     accentTextTheme: TextTheme(bodyText1: TextStyle(fontSize: 14)),
     // buttonColor: Colors.amber[800],
     dividerColor: Colors.grey.shade800,
-    textTheme: TextTheme(button: TextStyle(fontSize: 14)),
+    textTheme: TextTheme(
+        button: TextStyle(fontSize: 14),
+        bodyText2: TextStyle(color: Colors.amber)),
     brightness: Brightness.dark,
     canvasColor: Colors.black,
     accentColor: Colors.amber,
@@ -76,18 +80,25 @@ class ThemeX extends GetxController {
         RadioThemeData(fillColor: MaterialStateProperty.all(Colors.amber)),
     shadowColor: Colors.grey,
     hoverColor: Colors.grey[800]!.withOpacity(0.6),
+    iconTheme: IconThemeData(
+      color: Colors.amber,
+    ),
   );
 
-  TextStyle get bodyTextTheme => Get.theme.textTheme.bodyText2!.copyWith(
-        fontSize: fontSize!.value.toDouble(),
+  Rx<TextStyle> get bodyTextTheme => Get.theme.textTheme.bodyText2!
+      .copyWith(
+        fontSize: fontSize!.toDouble(),
         color: Hive.box("theme").get("isDarkMode") ? Colors.amber : Colors.blue,
-      );
+      )
+      .obs;
 
   addFontToHive() {
-    font.put("fontSize", fontSize!.value);
+    font.put("fontSize", fontSize!);
+    update();
   }
 
   addThemeToHive() {
-    theme.put("isDarkMode", !Get.isDarkMode);
+    Hive.box("theme").put("isDarkMode", thememode!);
+    update();
   }
 }

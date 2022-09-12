@@ -1,3 +1,4 @@
+import 'package:TexBan/screens/unknownPage.dart';
 import 'package:TexBan/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:TexBan/widgets/appBar.dart';
@@ -6,207 +7,49 @@ import 'package:TexBan/widgets/customedText.dart';
 import 'package:get/get.dart';
 
 class HoghughiServicesPage extends StatelessWidget {
-  HoghughiServicesPage({Key? key}) : super(key: key);
+  String? title;
+  HoghughiServicesPage({Key? key, this.title}) : super(key: key);
   ThemeX controller = Get.find();
+  List buttonsTxt = [
+    "ثبت نام کد اقتصادی",
+    "ارسال اظهارنامه",
+    "تفسیر گزارش رسیدگی",
+    "حضور در جلسات رسیدگی",
+    "پیگیری اعتراضات",
+    "ثبت اعتراضات و تهیه لایحه اعتراض",
+  ];
+  List buttonPages = [
+    UnknownPage(),
+    UnknownPage(),
+    UnknownPage(),
+    UnknownPage(),
+    UnknownPage(),
+    UnknownPage(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomedAppBar(
-        title: "خدمات مالیاتی اشخاص حقوقی",
+        title: title!,
       ),
-      body: ListView(
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(15, 8, 15, 8),
-                  child: CustomedButton(
-                    padding: EdgeInsets.all(30),
-                    child: Text(
-                      "تشکیل پرونده",
-                      style: controller.bodyTextTheme,
+      body: ListView.builder(
+          itemCount: buttonsTxt.length,
+          itemBuilder: (_, index) {
+            return Padding(
+              padding: EdgeInsets.all(8),
+              child: CustomedButton(
+                padding: EdgeInsets.all(30),
+                child: Text(buttonsTxt[index]),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    GetPageRoute(
+                      page: () => buttonPages[index],
                     ),
-                    onPressed: () {},
-                  ),
-                ),
+                  );
+                },
               ),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(15, 8, 15, 8),
-                  child: CustomedButton(
-                    padding: EdgeInsets.all(30),
-                    child: Text(
-                      "ثبت‌نام کد اقتصادی",
-                      style: controller.bodyTextTheme,
-                    ),
-                    onPressed: () {},
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(15, 8, 15, 8),
-                  child: CustomedButton(
-                    padding: EdgeInsets.all(30),
-                    child: Text(
-                      "تحریر دفاتر",
-                      style: controller.bodyTextTheme,
-                    ),
-                    onPressed: () {},
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(15, 8, 15, 8),
-                  child: CustomedButton(
-                    padding: EdgeInsets.all(30),
-                    child: Text(
-                      "ارسال اظهارنامه",
-                      style: controller.bodyTextTheme,
-                    ),
-                    onPressed: () {},
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(15, 8, 15, 8),
-                  child: CustomedButton(
-                    padding: EdgeInsets.all(30),
-                    child: Text(
-                      "ارسال اظهارنامه ارزش‌افزوده",
-                      style: controller.bodyTextTheme,
-                    ),
-                    onPressed: () {},
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(15, 8, 15, 8),
-                  child: CustomedButton(
-                    padding: EdgeInsets.all(30),
-                    child: Text(
-                      "ارسال صورت معاملات فصلی",
-                      style: controller.bodyTextTheme,
-                    ),
-                    onPressed: () {},
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(15, 8, 15, 8),
-                  child: CustomedButton(
-                    padding: EdgeInsets.all(30),
-                    child: Text(
-                      "تفسیر گزارش رسیدگی",
-                      style: controller.bodyTextTheme,
-                    ),
-                    onPressed: () {},
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(15, 8, 15, 8),
-                  child: CustomedButton(
-                    padding: EdgeInsets.all(30),
-                    child: Text(
-                      "حضور جلسات رسیدگی",
-                      style: controller.bodyTextTheme,
-                    ),
-                    onPressed: () {},
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(15, 8, 15, 8),
-                  child: CustomedButton(
-                    padding: EdgeInsets.all(30),
-                    child: Text(
-                      "پیگیری اعتراضات",
-                      style: controller.bodyTextTheme,
-                    ),
-                    onPressed: () {},
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(15, 8, 15, 8),
-                  child: CustomedButton(
-                    padding: EdgeInsets.all(30),
-                    child: Text(
-                      "نقل و انتقال سهام",
-                      style: controller.bodyTextTheme,
-                    ),
-                    onPressed: () {},
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(15, 8, 15, 8),
-                  child: CustomedButton(
-                    padding: EdgeInsets.all(30),
-                    child: Obx(
-                      () => Text(
-                        "ثبت اعتراضات و تهیه لایحه خاص",
-                        style: controller.bodyTextTheme,
-                      ),
-                    ),
-                    onPressed: () {},
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(15, 8, 15, 8),
-                  child: CustomedButton(
-                    padding: EdgeInsets.all(30),
-                    child: Text(
-                      "مشاوره رایگان",
-                      style: controller.bodyTextTheme,
-                    ),
-                    onPressed: () {},
-                  ),
-                ),
-              ),
-            ],
-          ),
-          // Center(
-          //   child: Text(
-          //     "کلیه اشخاص حقیقی تابع ایران",
-          //     style: TextStyle(color: Colors.grey),
-          //   ),
-          // ),
-        ],
-      ),
+            );
+          }),
     );
   }
 }

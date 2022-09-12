@@ -1,11 +1,12 @@
+import 'package:TexBan/screens/unknownPage.dart';
 import 'package:TexBan/widgets/appBar.dart';
 import 'package:TexBan/widgets/customedButton.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ValueAddServicePage extends StatelessWidget {
-  String? title = Get.arguments;
-  ValueAddServicePage({Key? key}) : super(key: key);
+  String? title;
+  ValueAddServicePage({Key? key, this.title}) : super(key: key);
   List buttonsTxt = [
     "تشکیل پرونده",
     "ثبت نام ارزش افزوده(EVAT)",
@@ -16,13 +17,13 @@ class ValueAddServicePage extends StatelessWidget {
     "ثبت اعتراضات و تهیه لایحه اعتراض",
   ];
   List buttonPages = [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
+    UnknownPage(),
+    UnknownPage(),
+    UnknownPage(),
+    UnknownPage(),
+    UnknownPage(),
+    UnknownPage(),
+    UnknownPage(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,8 @@ class ValueAddServicePage extends StatelessWidget {
                 padding: EdgeInsets.all(30),
                 child: Text(buttonsTxt[index]),
                 onPressed: () {
-                  Get.toNamed(buttonPages[index]);
+                  Navigator.of(context)
+                      .push(GetPageRoute(page: () => buttonPages[index]));
                 },
               ),
             );

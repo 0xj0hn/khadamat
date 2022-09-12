@@ -1,3 +1,8 @@
+import 'package:TexBan/screens/emptyHouseServices.dart';
+import 'package:TexBan/screens/ersServices.dart';
+import 'package:TexBan/screens/haghighiServices.dart';
+import 'package:TexBan/screens/naghlServices.dart';
+import 'package:TexBan/screens/valueAddServices.dart';
 import 'package:TexBan/utils/theme.dart';
 import 'package:TexBan/widgets/customedButton.dart';
 import 'package:flutter/material.dart';
@@ -27,15 +32,24 @@ class FinanceServicePage extends StatelessWidget {
                   CustomButtonItem(
                     title: "مشاوره مالیاتی",
                     onPressed: () {
-                      Get.toNamed("/createFile", arguments: "مشاوره مالیاتی");
+                      Navigator.of(context).push(
+                        GetPageRoute(
+                          page: () => CreateFilePage(
+                            title: "مشاوره مالیاتی",
+                          ),
+                        ),
+                      );
                     },
                   ),
                   CustomButtonItem(
                     title: "تهیه لایحه اعتراض",
                     onPressed: () {
-                      Get.toNamed(
-                        "/createFile",
-                        arguments: "تهیه لایحه اعتراض",
+                      Navigator.of(context).push(
+                        GetPageRoute(
+                          page: () => CreateFilePage(
+                            title: "تهیه لایحه اعتراض",
+                          ),
+                        ),
                       );
                     },
                   ),
@@ -47,19 +61,36 @@ class FinanceServicePage extends StatelessWidget {
                   CustomButtonItem(
                     title: "تراکنش بانکی",
                     onPressed: () {
-                      Get.toNamed("/createFile", arguments: "تراکنش بانکی");
+                      Navigator.of(context).push(
+                        GetPageRoute(
+                          page: () => CreateFilePage(
+                            title: "تراکنش بانکی",
+                          ),
+                        ),
+                      );
                     },
                   ),
                   CustomButtonItem(
                     title: "سامانه مودیان",
                     onPressed: () {
-                      Get.toNamed("/createFile", arguments: "سامانه مودیان");
+                      Navigator.of(context).push(
+                        GetPageRoute(
+                            page: () => CreateFilePage(
+                                  title: "سامانه مودیان",
+                                )),
+                      );
                     },
                   ),
                   CustomButtonItem(
                     title: "اشخاص حقوقی",
                     onPressed: () {
-                      Get.toNamed("/services");
+                      Navigator.of(context).push(
+                        GetPageRoute(
+                          page: () => HoghughiServicesPage(
+                            title: "خدمات مالیاتی اشخاص حقوقی",
+                          ),
+                        ),
+                      );
                     },
                   ),
                 ],
@@ -70,16 +101,24 @@ class FinanceServicePage extends StatelessWidget {
                   CustomButtonItem(
                     title: "اشخاص حقیقی",
                     onPressed: () {
-                      Get.toNamed("/haghighiServices",
-                          arguments: "خدمات مالیاتی اشخاص حقیقی");
+                      Navigator.of(context).push(
+                        GetPageRoute(
+                          page: () => HaghighiServicesPage(
+                            title: "خدمات مالیاتی اشخاص حقیقی",
+                          ),
+                        ),
+                      );
                     },
                   ),
                   CustomButtonItem(
                     title: "ارزش افزوده",
                     onPressed: () {
-                      Get.toNamed(
-                        "/valueAddService",
-                        arguments: "خدمات مالیاتی ارزش افزوده",
+                      Navigator.of(context).push(
+                        GetPageRoute(
+                          page: () => ValueAddServicePage(
+                            title: "خدمات مالیاتی ارزش افزوده",
+                          ),
+                        ),
                       );
                     },
                   ),
@@ -91,24 +130,37 @@ class FinanceServicePage extends StatelessWidget {
                   CustomButtonItem(
                     title: "ارث",
                     onPressed: () {
-                      Get.toNamed("/ersServices",
-                          arguments: "خدمات مالیاتی ارث");
+                      Navigator.of(context).push(
+                        GetPageRoute(
+                          page: () => ErsServicesPage(
+                            title: "خدمات مالیاتی ارزش افزوده",
+                          ),
+                        ),
+                      );
                     },
                   ),
                   CustomButtonItem(
                     title: "خانه‌های خالی",
                     onPressed: () {
-                      Get.toNamed(
-                        "/emptyHouses",
-                        arguments: "خدمات مالیاتی خانه‌های خالی",
+                      Navigator.of(context).push(
+                        GetPageRoute(
+                          page: () => EmptyHousePage(
+                            title: "خدمات مالیاتی خانه‌های خالی",
+                          ),
+                        ),
                       );
                     },
                   ),
                   CustomButtonItem(
                     title: "مستغلات و نقل و انتقالات",
                     onPressed: () {
-                      Get.toNamed("/naghlServices",
-                          arguments: "خدمات مالیاتی مستغلات و نقل و انتقالات");
+                      Navigator.of(context).push(
+                        GetPageRoute(
+                          page: () => NaghlServicesPage(
+                            title: "خدمات مالیاتی مستغلات و نقل و انتقالات",
+                          ),
+                        ),
+                      );
                     },
                   ),
                 ],

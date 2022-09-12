@@ -1,7 +1,13 @@
+import 'package:TexBan/screens/login.dart';
 import 'package:TexBan/utils/theme.dart';
 import 'package:TexBan/widgets/appBar.dart';
+import 'package:TexBan/widgets/customedButton.dart';
+import 'package:TexBan/widgets/customedTextField.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class SettingsPage extends StatelessWidget {
   @override
@@ -9,90 +15,155 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomedAppBar(
-        title: "تنظیمات",
+        title: "پروفایل و تنظیمات",
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Obx(
-              () => CheckboxListTile(
+            GetBuilder<ThemeX>(
+              builder: (_) => CheckboxListTile(
                 contentPadding: EdgeInsets.all(8),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
                 title: Text(
                   "تم تیره: ",
-                  style: controller.bodyTextTheme,
+                  style: _.bodyTextTheme.value,
                 ),
-                value: controller.thememode!.value,
+                value: _.thememode!,
                 onChanged: (val) {
-                  controller.thememode?.value = val!;
+                  _.thememode = val!;
                   Get.changeThemeMode(
-                    val! == true ? ThemeMode.dark : ThemeMode.light,
+                    val == true ? ThemeMode.dark : ThemeMode.light,
                   );
                   controller.addThemeToHive();
                 },
               ),
             ),
+
             Divider(
-              height: 3,
+              height: 2,
             ),
-            Obx(
-              () => Text(
-                "فونت‌ها: ",
-                style: controller.bodyTextTheme,
-              ),
-            ),
-            Obx(
-              () => RadioListTile(
-                title: Text(
-                  "فونت 14",
-                  style: TextStyle(fontSize: 14),
+            Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.all(8),
+                    child: CustomedTextField(
+                      label: "نام",
+                    ),
+                  ),
                 ),
-                value: 14,
-                groupValue: controller.fontSize!.value,
-                onChanged: (int? val) {
-                  controller.fontSize!.value = val!;
-                  controller.addFontToHive();
-                },
-              ),
-            ),
-            Obx(
-              () => RadioListTile(
-                title: Text("فونت 16"),
-                value: 16,
-                groupValue: controller.fontSize!.value,
-                onChanged: (int? val) {
-                  controller.fontSize!.value = val!;
-                  controller.addFontToHive();
-                },
-              ),
-            ),
-            Obx(
-              () => RadioListTile(
-                title: Text(
-                  "فونت 18",
-                  style: TextStyle(fontSize: 18),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.all(8),
+                    child: CustomedTextField(
+                      label: "نام خانوادگی",
+                    ),
+                  ),
                 ),
-                value: 18,
-                groupValue: controller.fontSize!.value,
-                onChanged: (int? val) {
-                  controller.fontSize!.value = val!;
-                  Get.theme.textTheme.apply(fontFamily: 'Vazir');
-                  controller.addFontToHive();
+              ],
+            ),
+            CustomedButton(
+              padding: EdgeInsets.all(15),
+              onPressed: () {},
+              child: Text("تغییر نام و نام خانوادگی"),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Text(
+              "تنظیمات فونت:",
+            ),
+            GetBuilder<ThemeX>(
+              init: ThemeX(),
+              builder: (_) => Slider(
+                value: _.fontSize!.toDouble(),
+                divisions: 2,
+                onChanged: (val) {
+                  _.fontSize = val;
+                  _.addFontToHive();
                 },
+                label: _.fontSize!.round().toString(),
+                min: 14,
+                max: 18,
               ),
             ),
-            Padding(
-              padding: EdgeInsets.all(8),
-              child: Obx(
-                () => Text(
-                  "پس از تعیین تم مورد نظر و فونت، این صفحه را ببندید تا تغییرات اعمال شود.",
-                  style: controller.bodyTextTheme,
-                ),
-              ),
-            )
+
+            // Padding(
+            //   padding: EdgeInsets.all(8),
+            //   child: Text(
+            //     "پس از تعیین تم مورد نظر و فونت، این صفحه را ببندید تا تغییرات اعمال شود.",
+            //     //style: controller,
+            //   ),
+            // ),
+            Divider(
+              height: 2,
+            ),
+            InstagramViewWidget(),
+            Divider(
+              height: 2,
+            ),
+            SizedBox(
+              height: 200,
+            ),
+            ExitButtonWidget(),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class ExitButtonWidget extends StatelessWidget {
+  const ExitButtonWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: CustomedButton(
+        onPressed: () {
+          Navigator.of(context, rootNavigator: true).pushReplacement(
+            GetPageRoute(page: () => LoginPage()),
+          );
+          Hive.box("auth").put("wasLoggined", false);
+        },
+        padding: EdgeInsets.all(30),
+        child: Text("خروج از حساب کاربری"),
+      ),
+    );
+  }
+}
+
+class InstagramViewWidget extends StatelessWidget {
+  const InstagramViewWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(8),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(8),
+        onTap: () async {
+          launchUrlString("https://instagram.com/e.taxban");
+        },
+        child: Padding(
+          padding: EdgeInsets.all(10),
+          child: Row(
+            children: [
+              Image.network(
+                  "https://www.instagram.com/static/images/ico/favicon.ico/36b3ee2d91ed.ico"),
+              Padding(
+                padding: EdgeInsets.all(8),
+                child: Text("اینستاگرام تکسبان"),
+              ),
+            ],
+          ),
         ),
       ),
     );

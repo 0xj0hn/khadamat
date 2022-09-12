@@ -1,11 +1,12 @@
+import 'package:TexBan/screens/unknownPage.dart';
 import 'package:TexBan/widgets/appBar.dart';
 import 'package:TexBan/widgets/customedButton.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class EmptyHousePage extends StatelessWidget {
-  String? title = Get.arguments;
-  EmptyHousePage({Key? key}) : super(key: key);
+  String? title;
+  EmptyHousePage({Key? key, this.title}) : super(key: key);
   List buttonsTxt = [
     "مشاوره",
     "تفسیر گزارش رسیدگی",
@@ -13,10 +14,10 @@ class EmptyHousePage extends StatelessWidget {
     "ثبت اعتراضات و تهیه لایحه اعتراض",
   ];
   List buttonPages = [
-    "",
-    "",
-    "",
-    "",
+    UnknownPage(),
+    UnknownPage(),
+    UnknownPage(),
+    UnknownPage(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,11 @@ class EmptyHousePage extends StatelessWidget {
                 padding: EdgeInsets.all(30),
                 child: Text(buttonsTxt[index]),
                 onPressed: () {
-                  Get.toNamed(buttonPages[index]);
+                  Navigator.of(context).push(
+                    GetPageRoute(
+                      page: () => buttonPages[index],
+                    ),
+                  );
                 },
               ),
             );

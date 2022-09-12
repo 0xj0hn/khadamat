@@ -12,7 +12,7 @@ class CustomedAppBar extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
       title: Text(
         title!,
-        // style: controller.bodyTextTheme
+        // style: controller.bodyTextTheme.value
         //     .copyWith(fontSize: controller.fontSize!.value.toDouble() + 3),
       ),
       elevation: 0.5,
@@ -25,7 +25,7 @@ class CustomedAppBar extends StatelessWidget with PreferredSizeWidget {
             Get.changeThemeMode(
               !Get.isDarkMode ? ThemeMode.dark : ThemeMode.light,
             );
-            controller.thememode!.value = !Get.isDarkMode;
+            controller.thememode = !Get.isDarkMode;
 
             controller.addThemeToHive();
           },
