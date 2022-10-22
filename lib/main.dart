@@ -24,7 +24,7 @@ void main() async {
   await Hive.openBox("theme");
   await Hive.openBox("auth");
   var box = Hive.box("auth");
-  box.put("wasLoggined", box.get("wasLoggined") ?? true);
+  box.put("wasLoggined", box.get("wasLoggined") ?? false);
   runApp(const MyApp());
 }
 
