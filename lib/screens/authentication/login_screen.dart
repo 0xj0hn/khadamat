@@ -1,5 +1,5 @@
-import 'package:TexBan/screens/home.dart';
-import 'package:TexBan/screens/signup.dart';
+import 'package:TexBan/screens/home/home_screen.dart';
+import 'package:TexBan/screens/authentication/signup_screen.dart';
 import 'package:TexBan/utils/inputValidator.dart';
 import 'package:TexBan/utils/userProvider.dart';
 import 'package:TexBan/widgets/appBar.dart';
@@ -9,7 +9,7 @@ import 'package:TexBan/widgets/customedTextField.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import '../utils/theme.dart';
+import '../../utils/theme.dart';
 
 class LoginPage extends StatelessWidget {
   var checkValue = false.obs;
@@ -23,7 +23,7 @@ class LoginPage extends StatelessWidget {
     }
 
     var isLoading = false.obs;
-    UserProvider userProvider = new UserProvider();
+    UserProvider userProvider = UserProvider();
     return Scaffold(
       appBar: CustomedAppBar(
         title: "صفحه ورود",

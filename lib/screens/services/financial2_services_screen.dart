@@ -1,10 +1,10 @@
-import 'package:TexBan/screens/createFile.dart';
-import 'package:TexBan/screens/emptyHouseServices.dart';
-import 'package:TexBan/screens/ersServices.dart';
-import 'package:TexBan/screens/haghighiServices.dart';
-import 'package:TexBan/screens/hoghughiServices.dart';
-import 'package:TexBan/screens/naghlServices.dart';
-import 'package:TexBan/screens/valueAddServices.dart';
+import 'package:TexBan/screens/tickets/create_file_screen.dart';
+import 'package:TexBan/screens/services/empty_house_services_screen.dart';
+import 'package:TexBan/screens/services/ers_services_screen.dart';
+import 'package:TexBan/screens/services/haghighi_services_screen.dart';
+import 'package:TexBan/screens/services/hoghughi_services_screen.dart';
+import 'package:TexBan/screens/services/naghl_services_screen.dart';
+import 'package:TexBan/screens/services/value_add_services_screen.dart';
 import 'package:TexBan/utils/theme.dart';
 import 'package:TexBan/widgets/appBar.dart';
 import 'package:TexBan/widgets/customedCardWidget.dart';

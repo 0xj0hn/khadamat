@@ -1,5 +1,5 @@
-import 'package:TexBan/screens/home.dart';
-import 'package:TexBan/screens/settings.dart';
+import 'package:TexBan/screens/home/home_screen.dart';
+import 'package:TexBan/screens/settings_screen.dart';
 import 'package:TexBan/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

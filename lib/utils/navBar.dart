@@ -1,4 +1,4 @@
-import 'package:TexBan/screens/financialServices.dart';
+import 'package:TexBan/screens/services/financial_services_screen.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 

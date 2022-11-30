@@ -1,26 +1,22 @@
-import 'package:TexBan/screens/unknownPage.dart';
+import 'package:TexBan/screens/unknown_screen.dart';
 import 'package:TexBan/widgets/appBar.dart';
 import 'package:TexBan/widgets/customedButton.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class HaghighiServicesPage extends StatelessWidget {
+class ValueAddServicePage extends StatelessWidget {
   String? title;
-  HaghighiServicesPage({Key? key, this.title}) : super(key: key);
+  ValueAddServicePage({Key? key, this.title}) : super(key: key);
   List buttonsTxt = [
     "تشکیل پرونده",
-    "ثبت نام کد اقتصادی",
-    "تحریر دفاتر",
+    "ثبت نام ارزش افزوده(EVAT)",
     "ارسال اظهارنامه",
-    "ارسال صورت معاملات فصلی",
     "تفسیر گزارش رسیدگی",
     "حضور در جلسات رسیدگی",
     "پیگیری اعتراضات",
     "ثبت اعتراضات و تهیه لایحه اعتراض",
   ];
   List buttonPages = [
-    UnknownPage(),
-    UnknownPage(),
     UnknownPage(),
     UnknownPage(),
     UnknownPage(),
@@ -36,7 +32,7 @@ class HaghighiServicesPage extends StatelessWidget {
         title: title!,
       ),
       body: ListView.builder(
-          itemCount: buttonsTxt.length,
+          itemCount: 7,
           itemBuilder: (_, index) {
             return Padding(
               padding: EdgeInsets.all(8),
@@ -44,11 +40,8 @@ class HaghighiServicesPage extends StatelessWidget {
                 padding: EdgeInsets.all(30),
                 child: Text(buttonsTxt[index]),
                 onPressed: () {
-                  Navigator.of(context).push(
-                    GetPageRoute(
-                      page: () => buttonPages[index],
-                    ),
-                  );
+                  Navigator.of(context)
+                      .push(GetPageRoute(page: () => buttonPages[index]));
                 },
               ),
             );

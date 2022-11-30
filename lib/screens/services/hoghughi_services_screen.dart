@@ -1,19 +1,22 @@
-import 'package:TexBan/screens/unknownPage.dart';
+import 'package:TexBan/screens/unknown_screen.dart';
+import 'package:TexBan/utils/theme.dart';
+import 'package:flutter/material.dart';
 import 'package:TexBan/widgets/appBar.dart';
 import 'package:TexBan/widgets/customedButton.dart';
-import 'package:flutter/material.dart';
+import 'package:TexBan/widgets/customedText.dart';
 import 'package:get/get.dart';
 
-class ErsServicesPage extends StatelessWidget {
+class HoghughiServicesPage extends StatelessWidget {
   String? title;
-  ErsServicesPage({Key? key, this.title}) : super(key: key);
+  HoghughiServicesPage({Key? key, this.title}) : super(key: key);
+  ThemeX controller = Get.find();
   List buttonsTxt = [
     "ثبت نام کد اقتصادی",
     "ارسال اظهارنامه",
     "تفسیر گزارش رسیدگی",
     "حضور در جلسات رسیدگی",
     "پیگیری اعتراضات",
-    "ثبت اعتراضات و تهیه لایه اعتراض",
+    "ثبت اعتراضات و تهیه لایحه اعتراض",
   ];
   List buttonPages = [
     UnknownPage(),
@@ -38,8 +41,11 @@ class ErsServicesPage extends StatelessWidget {
                 padding: EdgeInsets.all(30),
                 child: Text(buttonsTxt[index]),
                 onPressed: () {
-                  Navigator.of(context)
-                      .push(GetPageRoute(page: () => buttonPages[index]));
+                  Navigator.of(context).push(
+                    GetPageRoute(
+                      page: () => buttonPages[index],
+                    ),
+                  );
                 },
               ),
             );

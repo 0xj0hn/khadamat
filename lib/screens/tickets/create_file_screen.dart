@@ -1,3 +1,7 @@
+import 'dart:async';
+
+import 'package:TexBan/utils/userProvider.dart';
+import 'package:TexBan/widgets/dropDownButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -11,10 +15,11 @@ class CreateFilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController namefamily = TextEditingController();
+    TextEditingController txtIssueSubject = TextEditingController();
     TextEditingController phone = TextEditingController();
     TextEditingController txtTitle = TextEditingController(text: title);
     TextEditingController txtContent = TextEditingController();
+    Rx<Priority> selectedPriority = Priority.critical.obs;
 
     return Scaffold(
       appBar: CustomedAppBar(
@@ -25,24 +30,25 @@ class CreateFilePage extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(20),
             child: CustomedTextField(
-              label: "نام و نام‌خانوادگی",
-              icon: Icon(Icons.person),
-              controller: namefamily,
+              label: "عنوان مشکل",
+              icon: Icon(Icons.report_problem),
+              controller: txtIssueSubject,
             ),
           ),
           Padding(
             padding: EdgeInsets.all(20),
-            child: CustomedTextField(
-              label: "شماره تماس",
-              icon: Icon(Icons.phone),
-              controller: phone,
-              keyboardType: TextInputType.phone,
-              maxLength: 11,
-              helper: "نمونه: 09381234567",
-              inputFormatters: [
-                FilteringTextInputFormatter.deny(RegExp(r"[a-z]|[A-Z]")),
-              ],
-            ),
+            // child: CustomedTextField(
+            //   label: "اولویت",
+            //   icon: Icon(Icons.priority_high),
+            //   controller: phone,
+            //   keyboardType: TextInputType.phone,
+            //   maxLength: 11,
+            //   helper: "نمونه: 09381234567",
+            //   inputFormatters: [
+            //     FilteringTextInputFormatter.deny(RegExp(r"[a-z]|[A-Z]")),
+            //   ],
+            // ),
+            child: createPriority(context, selectedPriority),
           ),
           Padding(
             padding: EdgeInsets.all(20),
@@ -71,14 +77,50 @@ class CreateFilePage extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.check),
+        child: const Icon(Icons.check),
         onPressed: () {
-          Get.snackbar(
-            "وضعیت",
-            "اوه مثل اینکه خطایی پیش اومد...",
+          UserProvider userProvider = UserProvider();
+
+          userProvider.sendTicket(
+            selectedPriority.value,
+            txtIssueSubject,
+            txtTitle.text,
+            txtContent.text,
           );
         },
       ),
+    );
+  }
+
+  Row createPriority(BuildContext context, Rx<Priority> selectedPriority) {
+    return Row(
+      children: [
+        const Expanded(
+          flex: 1,
+          child: Padding(
+            padding: EdgeInsets.all(15.0),
+            child: Icon(
+              Icons.priority_high_outlined,
+              color: Colors.grey,
+            ),
+          ),
+        ),
+        Expanded(
+          flex: 9,
+          child: DecoratedBox(
+            child: CustomDropDownButton(
+              selectedPriority: selectedPriority,
+            ),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Theme.of(context).dividerColor,
+                strokeAlign: StrokeAlign.outside,
+              ),
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

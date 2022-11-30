@@ -1,21 +1,7 @@
-import 'package:TexBan/screens/createFile.dart';
-import 'package:TexBan/screens/emptyHouseServices.dart';
-import 'package:TexBan/screens/ersServices.dart';
-import 'package:TexBan/screens/haghighiServices.dart';
-import 'package:TexBan/screens/home.dart';
-import 'package:TexBan/screens/login.dart';
-import 'package:TexBan/screens/naghlServices.dart';
-import 'package:TexBan/screens/hoghughiServices.dart';
-import 'package:TexBan/screens/settings.dart';
-import 'package:TexBan/screens/splashScreen.dart';
-import 'package:TexBan/screens/unknownPage.dart';
-import 'package:TexBan/screens/valueAddServices.dart';
-import 'package:TexBan/widgets/bottomNavBar.dart';
+import 'package:TexBan/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:TexBan/screens/financialServices.dart';
 import 'package:get/get.dart';
 import 'package:TexBan/utils/theme.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
@@ -31,7 +17,7 @@ void main() async {
 class ThemeService {
   var box = Hive.box("theme");
   ThemeMode get theme =>
-      box.get("isDarkMode") ? ThemeMode.dark : ThemeMode.light;
+      box.get("isDarkMode") ?? false ? ThemeMode.dark : ThemeMode.light;
 }
 
 class MyApp extends StatelessWidget {

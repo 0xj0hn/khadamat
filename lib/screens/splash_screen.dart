@@ -1,8 +1,9 @@
 import 'dart:async';
 import 'dart:ffi';
 import 'dart:io';
+import 'package:TexBan/utils/userProvider.dart';
 import 'package:loading_indicator/loading_indicator.dart';
-import 'package:TexBan/screens/login.dart';
+import 'package:TexBan/screens/authentication/login_screen.dart';
 import 'package:TexBan/widgets/bottomNavBar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,6 +20,12 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    UserProvider userProvider = UserProvider();
+    var box = Hive.box("auth");
+    if (box.get("refresh") != null && box.get("token") != null) {
+      userProvider.refreshToken();
+    }
+
     Timer(
       Duration(seconds: 3),
       () => Navigator.of(context).pushReplacement(

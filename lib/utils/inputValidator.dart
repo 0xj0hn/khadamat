@@ -1,3 +1,4 @@
+import 'package:TexBan/utils/userProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -38,6 +39,25 @@ class PhoneChecker extends InputValidatorController {
       errorText = null;
       _isValidate = true;
       update();
+    }
+  }
+}
+
+class PriorityClass {
+  Priority? priority;
+  static String getPriorityByName(Priority priority) {
+    if (priority.priority == 1) {
+      return "فوری";
+    } else if (priority.priority == 2) {
+      return "زیاد";
+    } else if (priority.priority == 3) {
+      return "معمولی";
+    } else if (priority.priority == 4) {
+      return "کم";
+    } else if (priority.priority == 5) {
+      return "خیلی کم";
+    } else {
+      return "مشکل";
     }
   }
 }

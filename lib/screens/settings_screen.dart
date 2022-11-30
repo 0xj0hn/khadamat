@@ -1,17 +1,22 @@
-import 'package:TexBan/screens/login.dart';
+import 'package:TexBan/screens/authentication/login_screen.dart';
 import 'package:TexBan/utils/theme.dart';
+import 'package:TexBan/utils/userProvider.dart';
 import 'package:TexBan/widgets/appBar.dart';
 import 'package:TexBan/widgets/customedButton.dart';
 import 'package:TexBan/widgets/customedTextField.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class SettingsPage extends StatelessWidget {
   @override
   ThemeX controller = Get.find();
+  UserProvider userProvider = UserProvider();
+  TextEditingController txtName = TextEditingController();
+  TextEditingController txtFamily = TextEditingController();
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomedAppBar(
@@ -44,29 +49,55 @@ class SettingsPage extends StatelessWidget {
             Divider(
               height: 2,
             ),
-            Row(
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.all(8),
-                    child: CustomedTextField(
-                      label: "نام",
+            FutureBuilder(
+              future: userProvider.getMyInformation(),
+              builder: (BuildContext context, AsyncSnapshot snapshot) {
+                if (snapshot.connectionState == ConnectionState.done &&
+                    snapshot.hasData) {
+                  txtName.text = snapshot.data!["first_name"];
+                  txtFamily.text = snapshot.data!["last_name"];
+                  return Row(
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.all(8),
+                          child: CustomedTextField(
+                            label: "نام",
+                            controller: txtName,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.all(8),
+                          child: CustomedTextField(
+                            label: "نام خانوادگی",
+                            controller: txtFamily,
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                } else {
+                  return Container(
+                    width: 35,
+                    height: 35,
+                    child: LoadingIndicator(
+                      indicatorType: Indicator.ballPulse,
                     ),
-                  ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.all(8),
-                    child: CustomedTextField(
-                      label: "نام خانوادگی",
-                    ),
-                  ),
-                ),
-              ],
+                  );
+                }
+              },
             ),
             CustomedButton(
               padding: EdgeInsets.all(15),
-              onPressed: () {},
+              onPressed: () async {
+                Map response = await userProvider.updateMyInformation(
+                  txtName.text,
+                  txtFamily.text,
+                );
+                Get.snackbar("وضعیت", "اطلاعات با موفقیت ثبت گردید");
+              },
               child: Text("تغییر نام و نام خانوادگی"),
             ),
             SizedBox(
@@ -100,7 +131,7 @@ class SettingsPage extends StatelessWidget {
             Divider(
               height: 2,
             ),
-            InstagramViewWidget(),
+            //InstagramViewWidget(),
             Divider(
               height: 2,
             ),

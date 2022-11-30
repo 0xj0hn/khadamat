@@ -1,7 +1,7 @@
-import 'package:TexBan/screens/financial2Services.dart';
-import 'package:TexBan/screens/financialServices.dart';
-import 'package:TexBan/screens/settings.dart';
-import 'package:TexBan/screens/unknownPage.dart';
+import 'package:TexBan/screens/services/financial2_services_screen.dart';
+import 'package:TexBan/screens/services/financial_services_screen.dart';
+import 'package:TexBan/screens/settings_screen.dart';
+import 'package:TexBan/screens/unknown_screen.dart';
 import 'package:TexBan/utils/theme.dart';
 import 'package:TexBan/widgets/appBar.dart';
 import 'package:TexBan/widgets/customedButton.dart';

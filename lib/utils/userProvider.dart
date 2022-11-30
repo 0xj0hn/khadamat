@@ -110,19 +110,21 @@ class UserProvider extends GetConnect {
     }
   }
 
-  sendTicket(Priority priority, subject, description) async {
+  sendTicket(Priority priority, issueSubject, title, description) async {
     Response req;
     String url = host + "/tickets/";
     var payload = {
       "priority": priority.priority,
-      "subject": subject,
-      "title": subject,
+      "subject": title,
+      "title": issueSubject,
       "submitter": 1, //the user id of user.
       "status": 1,
       "description": description,
     };
     try {
       req = await post(url, FormData(payload), headers: headers);
+      print(req.body);
+      Get.snackbar("وضعیت", "تیکت با موفقیت ثبت گردید");
     } catch (e) {
       Get.snackbar("وضعیت", "مشکلی پیش آمد!");
     }

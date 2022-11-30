@@ -1,23 +1,21 @@
-import 'package:TexBan/screens/unknownPage.dart';
+import 'package:TexBan/screens/unknown_screen.dart';
 import 'package:TexBan/widgets/appBar.dart';
 import 'package:TexBan/widgets/customedButton.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ValueAddServicePage extends StatelessWidget {
+class ErsServicesPage extends StatelessWidget {
   String? title;
-  ValueAddServicePage({Key? key, this.title}) : super(key: key);
+  ErsServicesPage({Key? key, this.title}) : super(key: key);
   List buttonsTxt = [
-    "تشکیل پرونده",
-    "ثبت نام ارزش افزوده(EVAT)",
+    "ثبت نام کد اقتصادی",
     "ارسال اظهارنامه",
     "تفسیر گزارش رسیدگی",
     "حضور در جلسات رسیدگی",
     "پیگیری اعتراضات",
-    "ثبت اعتراضات و تهیه لایحه اعتراض",
+    "ثبت اعتراضات و تهیه لایه اعتراض",
   ];
   List buttonPages = [
-    UnknownPage(),
     UnknownPage(),
     UnknownPage(),
     UnknownPage(),
@@ -32,7 +30,7 @@ class ValueAddServicePage extends StatelessWidget {
         title: title!,
       ),
       body: ListView.builder(
-          itemCount: 7,
+          itemCount: buttonsTxt.length,
           itemBuilder: (_, index) {
             return Padding(
               padding: EdgeInsets.all(8),

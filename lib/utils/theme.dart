@@ -88,7 +88,7 @@ class ThemeX extends GetxController {
   Rx<TextStyle> get bodyTextTheme => Get.theme.textTheme.bodyText2!
       .copyWith(
         fontSize: fontSize!.toDouble(),
-        color: Hive.box("theme").get("isDarkMode") ? Colors.amber : Colors.blue,
+        color: Hive.box("theme").get("isDarkMode") ?? false ? Colors.amber : Colors.blue,
       )
       .obs;
 
