@@ -1,6 +1,6 @@
 import 'package:TexBan/screens/authentication/login_screen.dart';
 import 'package:TexBan/utils/theme.dart';
-import 'package:TexBan/utils/userProvider.dart';
+import 'package:TexBan/utils/user_provider.dart';
 import 'package:TexBan/widgets/appbar.dart';
 import 'package:TexBan/widgets/customed_button.dart';
 import 'package:TexBan/widgets/customed_text_field.dart';

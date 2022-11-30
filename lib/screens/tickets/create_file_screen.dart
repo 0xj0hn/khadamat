@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:TexBan/utils/userProvider.dart';
+import 'package:TexBan/utils/user_provider.dart';
 import 'package:TexBan/widgets/drop_down_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
