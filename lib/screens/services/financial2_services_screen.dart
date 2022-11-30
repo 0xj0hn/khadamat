@@ -6,8 +6,8 @@ import 'package:TexBan/screens/services/hoghughi_services_screen.dart';
 import 'package:TexBan/screens/services/naghl_services_screen.dart';
 import 'package:TexBan/screens/services/value_add_services_screen.dart';
 import 'package:TexBan/utils/theme.dart';
-import 'package:TexBan/widgets/appBar.dart';
-import 'package:TexBan/widgets/customedCardWidget.dart';
+import 'package:TexBan/widgets/appbar.dart';
+import 'package:TexBan/widgets/customed_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

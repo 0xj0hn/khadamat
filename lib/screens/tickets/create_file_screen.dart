@@ -1,13 +1,13 @@
 import 'dart:async';
 
 import 'package:TexBan/utils/userProvider.dart';
-import 'package:TexBan/widgets/dropDownButton.dart';
+import 'package:TexBan/widgets/drop_down_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:TexBan/widgets/appBar.dart';
-import 'package:TexBan/widgets/customedText.dart';
-import 'package:TexBan/widgets/customedTextField.dart';
+import 'package:TexBan/widgets/appbar.dart';
+import 'package:TexBan/widgets/customed_text.dart';
+import 'package:TexBan/widgets/customed_text_field.dart';
 
 class CreateFilePage extends StatelessWidget {
   String? title;

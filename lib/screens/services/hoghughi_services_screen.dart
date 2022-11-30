@@ -1,9 +1,9 @@
 import 'package:TexBan/screens/unknown_screen.dart';
 import 'package:TexBan/utils/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:TexBan/widgets/appBar.dart';
-import 'package:TexBan/widgets/customedButton.dart';
-import 'package:TexBan/widgets/customedText.dart';
+import 'package:TexBan/widgets/appbar.dart';
+import 'package:TexBan/widgets/customed_button.dart';
+import 'package:TexBan/widgets/customed_text.dart';
 import 'package:get/get.dart';
 
 class HoghughiServicesPage extends StatelessWidget {

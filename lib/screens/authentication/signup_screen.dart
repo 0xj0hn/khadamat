@@ -1,5 +1,5 @@
-import 'package:TexBan/widgets/appBar.dart';
-import 'package:TexBan/widgets/customedButton.dart';
+import 'package:TexBan/widgets/appbar.dart';
+import 'package:TexBan/widgets/customed_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';

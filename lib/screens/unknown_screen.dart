@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:TexBan/widgets/appBar.dart';
+import 'package:TexBan/widgets/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

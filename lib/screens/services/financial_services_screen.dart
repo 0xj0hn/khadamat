@@ -4,14 +4,14 @@ import 'package:TexBan/screens/services/haghighi_services_screen.dart';
 import 'package:TexBan/screens/services/naghl_services_screen.dart';
 import 'package:TexBan/screens/services/value_add_services_screen.dart';
 import 'package:TexBan/utils/theme.dart';
-import 'package:TexBan/widgets/customedButton.dart';
+import 'package:TexBan/widgets/customed_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_polygon/flutter_polygon.dart';
 import 'package:get/get.dart';
 import 'package:TexBan/screens/tickets/create_file_screen.dart';
 import 'package:TexBan/screens/services/hoghughi_services_screen.dart';
-import 'package:TexBan/widgets/appBar.dart';
-import 'package:TexBan/widgets/customedText.dart';
+import 'package:TexBan/widgets/appbar.dart';
+import 'package:TexBan/widgets/customed_text.dart';
 import 'package:TexBan/widgets/sixedge.dart';
 
 class FinanceServicePage extends StatelessWidget {

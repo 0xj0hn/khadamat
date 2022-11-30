@@ -3,9 +3,9 @@ import 'package:TexBan/screens/services/financial_services_screen.dart';
 import 'package:TexBan/screens/settings_screen.dart';
 import 'package:TexBan/screens/unknown_screen.dart';
 import 'package:TexBan/utils/theme.dart';
-import 'package:TexBan/widgets/appBar.dart';
-import 'package:TexBan/widgets/customedButton.dart';
-import 'package:TexBan/widgets/customedCardWidget.dart';
+import 'package:TexBan/widgets/appbar.dart';
+import 'package:TexBan/widgets/customed_button.dart';
+import 'package:TexBan/widgets/customed_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
