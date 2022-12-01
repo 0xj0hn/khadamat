@@ -1,4 +1,6 @@
+import 'package:TexBan/utils/api/fake_data.dart';
 import 'package:TexBan/utils/api/user_provider.dart';
+import 'package:TexBan/utils/models/ticket_model.dart';
 import 'package:get/get.dart';
 
 class TicketsProvider extends GetConnect with ConnectionConfig {
@@ -32,7 +34,7 @@ class TicketsProvider extends GetConnect with ConnectionConfig {
         return await sendTicket(priority, issueSubject, title, description);
       }
     } catch (e) {
-      Get.snackbar("وضعیت", "مشکلی پیش آمد!");
+      print(e);
     }
     return null;
   }
@@ -51,5 +53,22 @@ class TicketsProvider extends GetConnect with ConnectionConfig {
     } catch (e) {
       print(e);
     }
+  }
+
+  Future<List<Ticket>?> fetchTickets() async {
+    Response? req;
+    String url = "$host/tickets/";
+    try {
+      req = await get(url, headers: getHeader);
+      if (req.statusCode == 200) {
+        return Ticket.makeTicketsFromList(req.body);
+      } else if (req.statusCode == 401) {
+        await refreshToken();
+        return await fetchTickets();
+      }
+    } catch (e) {
+      print(e);
+    }
+    return null;
   }
 }
