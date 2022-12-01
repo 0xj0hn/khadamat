@@ -16,6 +16,7 @@ class ThemeX extends GetxController {
   }
 
   static final lightTheme = ThemeData(
+    useMaterial3: true,
     appBarTheme: AppBarTheme(
       systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Colors.white,
@@ -38,6 +39,7 @@ class ThemeX extends GetxController {
     fontFamily: "Yekan",
   );
   static final darkTheme = ThemeData(
+    useMaterial3: true,
     primaryColor: Colors.amber[800],
     primarySwatch: Colors.amber,
     appBarTheme: AppBarTheme(
@@ -88,7 +90,9 @@ class ThemeX extends GetxController {
   Rx<TextStyle> get bodyTextTheme => Get.theme.textTheme.bodyText2!
       .copyWith(
         fontSize: fontSize!.toDouble(),
-        color: Hive.box("theme").get("isDarkMode") ?? false ? Colors.amber : Colors.blue,
+        color: Hive.box("theme").get("isDarkMode") ?? false
+            ? Colors.amber
+            : Colors.blue,
       )
       .obs;
 
