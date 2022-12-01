@@ -25,11 +25,11 @@ class TicketsProvider extends GetConnect with ConnectionConfig {
     };
     try {
       req = await post(url, FormData(payload), headers: getHeader);
-      if (req.statusCode == 200) {
+      if (req.statusCode == 201) {
         return true;
       } else if (req.statusCode == 401) {
         await refreshToken();
-        await sendTicket(priority, issueSubject, title, description);
+        return await sendTicket(priority, issueSubject, title, description);
       }
     } catch (e) {
       Get.snackbar("وضعیت", "مشکلی پیش آمد!");
