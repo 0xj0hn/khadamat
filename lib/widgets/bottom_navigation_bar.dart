@@ -1,5 +1,7 @@
 import 'package:TexBan/screens/home/home_screen.dart';
 import 'package:TexBan/screens/settings_screen.dart';
+import 'package:TexBan/screens/tickets/ticket_screen.dart';
+import 'package:TexBan/screens/tickets/tickets_detail_screen.dart';
 import 'package:TexBan/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,7 +20,7 @@ class BottomNavTabView extends StatelessWidget {
     List<Widget> screens = [
       HomePage(),
       Container(),
-      Container(),
+      TicketsDetailScreen(),
       Container(),
       SettingsPage(),
     ];
