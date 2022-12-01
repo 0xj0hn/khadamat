@@ -1,14 +1,13 @@
+import 'package:TexBan/screens/tickets/ticket_screen.dart';
+import 'package:TexBan/utils/models/ticket_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/routes/default_route.dart';
 
 class TicketPreview extends StatelessWidget {
-  String title;
-  String issueTitle;
-  String description;
+  Ticket ticket;
   TicketPreview({
     super.key,
-    required this.title,
-    required this.issueTitle,
-    required this.description,
+    required this.ticket,
   });
 
   @override
@@ -19,7 +18,15 @@ class TicketPreview extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: InkWell(
           borderRadius: BorderRadius.circular(20),
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).push(
+              GetPageRoute(
+                page: () => TicketScreen(
+                  title: ticket.title,
+                ),
+              ),
+            );
+          },
           child: Padding(
             padding: const EdgeInsets.only(
               left: 30,
@@ -34,14 +41,14 @@ class TicketPreview extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      title,
+                      ticket.title,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
                       ),
                     ),
-                    Text(issueTitle),
-                    Text(description),
+                    Text(ticket.subject),
+                    Text(ticket.description),
                   ],
                 ),
                 Container(
