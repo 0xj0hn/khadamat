@@ -1,6 +1,6 @@
 import 'package:TexBan/screens/authentication/login_screen.dart';
 import 'package:TexBan/utils/theme.dart';
-import 'package:TexBan/utils/user_provider.dart';
+import 'package:TexBan/utils/api/user_provider.dart';
 import 'package:TexBan/widgets/appbar.dart';
 import 'package:TexBan/widgets/customed_button.dart';
 import 'package:TexBan/widgets/customed_text_field.dart';
@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:loading_indicator/loading_indicator.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class SettingsPage extends StatelessWidget {

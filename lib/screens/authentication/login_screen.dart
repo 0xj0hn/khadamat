@@ -1,7 +1,7 @@
 import 'package:TexBan/screens/home/home_screen.dart';
 import 'package:TexBan/screens/authentication/signup_screen.dart';
 import 'package:TexBan/utils/input_validator.dart';
-import 'package:TexBan/utils/user_provider.dart';
+import 'package:TexBan/utils/api/user_provider.dart';
 import 'package:TexBan/widgets/appbar.dart';
 import 'package:TexBan/widgets/bottom_navigation_bar.dart';
 import 'package:TexBan/widgets/customed_button.dart';

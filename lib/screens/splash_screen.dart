@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:ffi';
 import 'dart:io';
-import 'package:TexBan/utils/user_provider.dart';
+import 'package:TexBan/utils/api/user_provider.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:TexBan/screens/authentication/login_screen.dart';
 import 'package:TexBan/widgets/bottom_navigation_bar.dart';

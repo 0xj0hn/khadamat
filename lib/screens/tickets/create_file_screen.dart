@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:TexBan/utils/user_provider.dart';
+import 'package:TexBan/utils/api/user_provider.dart';
 import 'package:TexBan/widgets/drop_down_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -81,7 +81,7 @@ class CreateFilePage extends StatelessWidget {
         onPressed: () {
           UserProvider userProvider = UserProvider();
 
-          userProvider.sendTicket(
+          userProvider.ticketSection.sendTicket(
             selectedPriority.value,
             txtIssueSubject,
             txtTitle.text,

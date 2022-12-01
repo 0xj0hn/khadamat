@@ -1,5 +1,6 @@
+import 'package:TexBan/utils/api/user_provider.dart';
 import 'package:TexBan/utils/input_validator.dart';
-import 'package:TexBan/utils/user_provider.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

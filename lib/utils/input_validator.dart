@@ -1,4 +1,4 @@
-import 'user_provider.dart';
+import 'package:TexBan/utils/api/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

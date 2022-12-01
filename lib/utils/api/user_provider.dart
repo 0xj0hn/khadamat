@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:TexBan/utils/api/tickets_provider.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 
@@ -14,13 +15,20 @@ enum Priority {
   const Priority(this.priority);
 }
 
-class UserProvider extends GetConnect {
+class ConnectionConfig {
+  final host = "https://taxban.iran.liara.run/api/v1";
+  final box = Hive.box("auth");
+}
+
+class UserProvider extends GetConnect with ConnectionConfig {
   @override
   late String host, refresh, token;
   Map<String, String>? headers;
+  late TicketsProvider ticketSection;
 
   UserProvider() {
     host = "https://taxban.iran.liara.run/api/v1";
+    ticketSection = TicketsProvider();
     token = Hive.box("auth").get("token") ?? "";
     refresh = Hive.box("auth").get("refresh") ?? "";
     headers = {
@@ -107,26 +115,6 @@ class UserProvider extends GetConnect {
       Get.snackbar("وضعیت", "توکن ریفرش شد!");
     } catch (e) {
       Get.snackbar("وضعیت", "اطلاعات دریافت شده سالم نیست");
-    }
-  }
-
-  sendTicket(Priority priority, issueSubject, title, description) async {
-    Response req;
-    String url = host + "/tickets/";
-    var payload = {
-      "priority": priority.priority,
-      "subject": title,
-      "title": issueSubject,
-      "submitter": 1, //the user id of user.
-      "status": 1,
-      "description": description,
-    };
-    try {
-      req = await post(url, FormData(payload), headers: headers);
-      print(req.body);
-      Get.snackbar("وضعیت", "تیکت با موفقیت ثبت گردید");
-    } catch (e) {
-      Get.snackbar("وضعیت", "مشکلی پیش آمد!");
     }
   }
 
