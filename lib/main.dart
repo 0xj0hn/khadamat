@@ -1,4 +1,5 @@
 import 'package:TexBan/screens/splash_screen.dart';
+import 'package:TexBan/utils/models/scroll_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:TexBan/utils/theme.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: "تکسبان",
+      scrollBehavior: MyScrollBehavior(),
       home: SplashScreen(),
       locale: Locale("fa"),
       theme: ThemeX.lightTheme,
