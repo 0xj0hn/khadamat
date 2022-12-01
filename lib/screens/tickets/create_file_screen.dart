@@ -78,15 +78,20 @@ class CreateFilePage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.check),
-        onPressed: () {
+        onPressed: () async {
           UserProvider userProvider = UserProvider();
 
-          userProvider.ticketSection.sendTicket(
+          var response = await userProvider.ticketSection.sendTicket(
             selectedPriority.value,
-            txtIssueSubject,
+            txtIssueSubject.text,
             txtTitle.text,
             txtContent.text,
           );
+          if (response) {
+            Get.snackbar("وضعیت", "تیکت ثبت شد. از قسمت تیکت مشاهده کنید.");
+          } else {
+            Get.snackbar("وضعیت", "مشکلی پیش آمد.");
+          }
         },
       ),
     );
