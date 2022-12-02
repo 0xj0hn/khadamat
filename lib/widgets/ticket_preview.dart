@@ -1,4 +1,5 @@
 import 'package:TexBan/screens/tickets/ticket_screen.dart';
+import 'package:TexBan/utils/app_service/app_service.dart';
 import 'package:TexBan/utils/models/ticket_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/routes/default_route.dart';
@@ -58,6 +59,18 @@ class TicketPreview extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Icon(Icons.messenger),
+                ),
+                Chip(
+                  label: Text(
+                    AppService.convertStatusToPersion(ticket.status),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: AppService.convertStatusToColor(ticket.status),
+                    ),
+                  ),
+                  backgroundColor: AppService.convertStatusToColor(
+                    ticket.status,
+                  ).withOpacity(0.2),
                 ),
               ],
             ),
