@@ -1,11 +1,13 @@
 import 'package:TexBan/utils/api/fake_data.dart';
 import 'package:TexBan/utils/api/user_provider.dart';
+import 'package:TexBan/utils/models/answer_model.dart';
 import 'package:TexBan/utils/models/ticket_model.dart';
 import 'package:get/get.dart';
 
 class TicketsProvider extends GetConnect with ConnectionConfig {
   late int _userId;
   late var _box;
+
   TicketsProvider() {
     _box = super.box;
     _userId = _box.get("user_id");
@@ -61,6 +63,7 @@ class TicketsProvider extends GetConnect with ConnectionConfig {
     try {
       req = await get(url, headers: getHeader);
       if (req.statusCode == 200) {
+        print(req.body);
         return Ticket.makeTicketsFromList(req.body);
       } else if (req.statusCode == 401) {
         await refreshToken();
@@ -72,8 +75,46 @@ class TicketsProvider extends GetConnect with ConnectionConfig {
     return null;
   }
 
+  Future<Ticket?> fetchSpecificTicket(int ticketId) async {
+    Response req;
+    String url = "$host/tickets/$ticketId/";
+    try {
+      req = await get(url, headers: getHeader);
+      if (req.statusCode == 200) {
+        return Ticket.fromJson(req.body);
+      } else if (req.statusCode == 401) {
+        await refreshToken();
+        return await fetchSpecificTicket(ticketId);
+      }
+    } catch (e) {
+      print(e);
+    }
+    return null;
+  }
+
+  sendAnswer(int ticketId, String message) async {
+    String url = "$host/answers/";
+    Response req;
+    try {
+      Map<String, dynamic> payload = {
+        "ticket": ticketId,
+        "detail": message,
+        "submitter": box.get("user_id"),
+      };
+      req = await post(url, FormData(payload), headers: getHeader);
+      if (req.statusCode == 201) {
+        return Answer.fromJson(req.body);
+      } else if (req.statusCode == 401) {
+        await refreshToken();
+        return await sendAnswer(ticketId, message);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
   Future<Answer?> getAnswer(int answerId) async {
-    Response? req;
+    Response req;
     String url = "$host/answers/$answerId/";
     try {
       req = await get(url, headers: getHeader);
