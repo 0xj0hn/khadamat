@@ -102,19 +102,16 @@ class UserProvider extends GetConnect with ConnectionConfig {
   refreshToken() async {
     Response? req;
     String url = host + "/gomi/token/refresh/";
+    String refresh = box.get('refresh');
     Map<String, dynamic> body = {"refresh": refresh};
     try {
       req = await post(url, FormData(body));
-      print(req.body);
+      if (req.statusCode == 200) {
+        box.put("token", req.body["access"]);
+        print("token refreshed");
+      }
     } catch (e) {
-      Get.snackbar("وضعیت", "خطایی دریافت شد.");
-    }
-    try {
-      //Hive.box("auth").put("refresh", req!.body['refresh']);
-      Hive.box("auth").put("token", req!.body['access'] ?? token);
-      Get.snackbar("وضعیت", "توکن ریفرش شد!");
-    } catch (e) {
-      Get.snackbar("وضعیت", "اطلاعات دریافت شده سالم نیست");
+      print(e);
     }
   }
 
