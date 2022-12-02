@@ -12,6 +12,26 @@ class TicketsDetailScreenStateModel extends GetxController {
     return _widgetTickets;
   }
 
+  updateAndChangeSpecificTicket(int ticketId) async {
+    Ticket? specifiedTicket =
+        await userProvider.ticketSection.fetchSpecificTicket(ticketId);
+    int ticketIndex = findTicketIndex(ticketId);
+    tickets![ticketIndex] = specifiedTicket!;
+    update();
+    return specifiedTicket.answers;
+  }
+
+  findTicketIndex(int ticketId) {
+    int index = 0;
+    tickets!.forEach((ticket) {
+      if (ticket.id == ticketId) {
+        return;
+      }
+      index++;
+    });
+    return index;
+  }
+
   fetchTickets() async {
     isTicketsLoading = true;
     tickets = await userProvider.ticketSection.fetchTickets();
