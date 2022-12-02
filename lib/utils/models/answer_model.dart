@@ -9,11 +9,11 @@ class Answer {
   Answer(this.id, this.detail, this.createdAt, this.ticketId, this.submitter);
   factory Answer.fromJson(Map<String, dynamic> data) {
     return Answer(
-      data['id'],
-      data['detail'],
-      data['createdAt'],
-      data['ticketId'],
-      data['submitter'],
+      data['id'] as int,
+      data['detail'] as String,
+      data['created_at'] as String,
+      data['ticket'] as int,
+      data['submitter'] as int,
     );
   }
   static makeAnswersFromList(List<dynamic> list) {}
