@@ -17,6 +17,7 @@ class ThemeX extends GetxController {
 
   static final lightTheme = ThemeData(
     useMaterial3: true,
+    colorSchemeSeed: Colors.blue,
     appBarTheme: AppBarTheme(
       systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Colors.white,
@@ -39,9 +40,10 @@ class ThemeX extends GetxController {
     fontFamily: "Yekan",
   );
   static final darkTheme = ThemeData(
-    useMaterial3: true,
-    primaryColor: Colors.amber[800],
+    useMaterial3: false,
+    primaryColor: Colors.amber,
     primarySwatch: Colors.amber,
+
     appBarTheme: AppBarTheme(
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarColor: Colors.black,
