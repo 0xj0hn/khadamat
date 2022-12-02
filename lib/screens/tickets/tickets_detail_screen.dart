@@ -19,7 +19,7 @@ class TicketsDetailScreen extends StatelessWidget {
       body: GetBuilder<TicketsDetailScreenStateModel>(
         init: TicketsDetailScreenStateModel(),
         didChangeDependencies: (model) async {
-          await model.controller?.fetchTickets();
+          await model.controller?.fetchTickets() ?? () {};
         },
         builder: (model) {
           if (model.tickets!.isEmpty && !model.isTicketsLoading) {
