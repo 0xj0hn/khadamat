@@ -22,7 +22,7 @@ class TicketPreview extends StatelessWidget {
             Navigator.of(context).push(
               GetPageRoute(
                 page: () => TicketScreen(
-                  title: ticket.title,
+                  ticket: ticket,
                 ),
               ),
             );
