@@ -71,4 +71,21 @@ class TicketsProvider extends GetConnect with ConnectionConfig {
     }
     return null;
   }
+
+  Future<Answer?> getAnswer(int answerId) async {
+    Response? req;
+    String url = "$host/answers/$answerId/";
+    try {
+      req = await get(url, headers: getHeader);
+      if (req.statusCode == 200) {
+        return Answer.fromJson(req.body);
+      } else if (req.statusCode == 401) {
+        await refreshToken();
+        return await getAnswer(answerId);
+      }
+    } catch (e) {
+      print(e);
+    }
+    return null;
+  }
 }
