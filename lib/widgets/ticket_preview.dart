@@ -52,6 +52,36 @@ class TicketPreview extends StatelessWidget {
                     Text(ticket.description),
                   ],
                 ),
+                Column(
+                  children: [
+                    Chip(
+                      label: Text(
+                        AppService.convertStatusToPersion(ticket.status),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: AppService.convertStatusToColor(ticket.status),
+                        ),
+                      ),
+                      backgroundColor: AppService.convertStatusToColor(
+                        ticket.status,
+                      ).withOpacity(0.2),
+                    ),
+                    SizedBox(
+                      height: 2,
+                    ),
+                    Chip(
+                      label: Text(
+                        AppService.convertPriorityToPersian(ticket.priority),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                      ),
+                      backgroundColor:
+                          Theme.of(context).primaryColor.withOpacity(0.2),
+                    ),
+                  ],
+                ),
                 Container(
                   padding: EdgeInsets.all(8),
                   decoration: BoxDecoration(
@@ -59,18 +89,6 @@ class TicketPreview extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Icon(Icons.messenger),
-                ),
-                Chip(
-                  label: Text(
-                    AppService.convertStatusToPersion(ticket.status),
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: AppService.convertStatusToColor(ticket.status),
-                    ),
-                  ),
-                  backgroundColor: AppService.convertStatusToColor(
-                    ticket.status,
-                  ).withOpacity(0.2),
                 ),
               ],
             ),
