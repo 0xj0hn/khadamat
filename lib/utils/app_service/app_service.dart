@@ -1,6 +1,21 @@
+import 'package:TexBan/utils/api/user_provider.dart';
 import 'package:flutter/material.dart';
 
 class AppService {
+  static convertPriorityToPersian(int priorityByInt) {
+    if (priorityByInt == Priority.critical.priority) {
+      return "فوری";
+    } else if (priorityByInt == Priority.high.priority) {
+      return "زیاد";
+    } else if (priorityByInt == Priority.normal.priority) {
+      return "معمولی";
+    } else if (priorityByInt == Priority.low.priority) {
+      return "کم";
+    } else if (priorityByInt == Priority.veryLow.priority) {
+      return "خیلی کم";
+    }
+  }
+
   static String convertStatusToPersion(int status) {
     if (status == 1) {
       return "*باز شده*";
