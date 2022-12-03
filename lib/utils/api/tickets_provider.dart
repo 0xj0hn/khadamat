@@ -10,7 +10,7 @@ class TicketsProvider extends GetConnect with ConnectionConfig {
 
   TicketsProvider() {
     _box = super.box;
-    _userId = _box.get("user_id");
+    _userId = _box.get("user_id") ?? 0;
   }
   Map<String, String> get getHeader {
     String token = super.box.get("token") ?? "";
