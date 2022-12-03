@@ -10,7 +10,6 @@ import 'package:loading_indicator/loading_indicator.dart';
 
 class TicketsDetailScreen extends StatelessWidget {
   const TicketsDetailScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     List<Ticket> tickets = [];
@@ -22,7 +21,8 @@ class TicketsDetailScreen extends StatelessWidget {
           await model.controller?.fetchTickets() ?? () {};
         },
         builder: (model) {
-          if (model.tickets!.isEmpty && !model.isTicketsLoading) {
+          if ((model.tickets == null || model.tickets!.isEmpty) &&
+              !model.isTicketsLoading) {
             return Center(child: Text("محتوایی نیست!"));
           } else if (model.isTicketsLoading) {
             return Center(
