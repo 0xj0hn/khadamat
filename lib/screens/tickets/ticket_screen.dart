@@ -12,8 +12,9 @@ class TicketScreen extends StatelessWidget {
   Ticket ticket;
   TicketScreen({super.key, required this.ticket});
   TextEditingController textController = TextEditingController();
-  TicketScreenModel ticketScreenModel = Get.find();
-  TicketsDetailScreenStateModel ticketsDetailModel = Get.find();
+  TicketScreenModel ticketScreenModel = Get.put(TicketScreenModel());
+  TicketsDetailScreenStateModel ticketsDetailModel =
+      Get.put(TicketsDetailScreenStateModel());
   updateChatsAndTickets() async {
     await ticketsDetailModel.fetchTickets();
     List<dynamic> answers =
@@ -28,7 +29,6 @@ class TicketScreen extends StatelessWidget {
       body: Stack(
         children: [
           GetBuilder<TicketScreenModel>(
-            init: TicketScreenModel(),
             didChangeDependencies: (state) async {
               List answers = ticket.answers;
               await state.controller!.getAnswersAndUpdateChatBubbles(answers);
