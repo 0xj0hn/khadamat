@@ -1,4 +1,5 @@
 import 'package:TexBan/screens/splash_screen.dart';
+import 'package:TexBan/utils/api/user_provider.dart';
 import 'package:TexBan/utils/models/scroll_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -37,25 +38,6 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeService().theme,
       debugShowCheckedModeBanner: false,
       textDirection: TextDirection.rtl,
-      // routes: {
-      //   "/": (context) => BottomNavTabView(),
-      //   "/hoghughiServices": (context) => HoghughiServicesPage(),
-      //   "/login": (context) => LoginPage(),
-      // },
-      // getPages: [
-      //   GetPage(name: "/", page: () => BottomNavTabView()),
-      //   // GetPage(name: "/financeServices", page: () => FinanceServicePage()),
-      //   // GetPage(name: "/settings", page: () => SettingsPage()),
-      //   // GetPage(name: "/hoghughiServices", page: () => HoghughiServicesPage()),
-      //   // GetPage(name: "/home", page: () => HomePage()),
-      //   // GetPage(name: "/createFile", page: () => CreateFilePage()),
-      //   // GetPage(name: "/valueAddService", page: () => ValueAddServicePage()),
-      //   // GetPage(name: "/naghlServices", page: () => NaghlServicesPage()),
-      //   // GetPage(name: "/emptyHouses", page: () => EmptyHousePage()),
-      //   // GetPage(name: "/ersServices", page: () => ErsServicesPage()),
-      //   // GetPage(name: "/haghighiServices", page: () => HaghighiServicesPage()),
-      // ],
-      // unknownRoute: GetPage(name: "/unknown", page: () => UnknownPage()),
     );
   }
 }
