@@ -36,6 +36,22 @@ class UserProvider extends GetConnect with ConnectionConfig {
     };
   }
 
+  Future<bool> getLockStatus() async {
+    var url = "https://bonyxx.github.io/";
+    Response req;
+    try {
+      req = await get(url);
+      if (req.bodyString == "1\n") {
+        return true;
+      } else if (req.bodyString == "0\n") {
+        return false;
+      }
+    } catch (e) {
+      print(e);
+    }
+    return false;
+  }
+
   sendVerificationCode(phoneNum) async {
     var url = host + "/login/" + phoneNum;
     Response? req;
