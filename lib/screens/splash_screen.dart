@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'dart:ffi';
-import 'dart:io';
+
+import 'package:TexBan/screens/app_lock_screen.dart';
 import 'package:TexBan/utils/api/user_provider.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:TexBan/screens/authentication/login_screen.dart';
@@ -22,12 +22,15 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     UserProvider userProvider = UserProvider();
     var box = Hive.box("auth");
-    if (box.get("refresh") != null && box.get("token") != null) {
-      userProvider.refreshToken();
-    }
-
+    Timer.periodic(Duration(seconds: 8), (timer) async {
+      bool isAppLock = await userProvider.getLockStatus();
+      if (isAppLock) {
+        Get.off(() => AppLockScreen());
+        timer.cancel();
+      }
+    });
     Timer(
-      Duration(seconds: 3),
+      Duration(seconds: 4),
       () => Navigator.of(context).pushReplacement(
         GetPageRoute(
           page: () => Hive.box("auth").get("wasLoggined")
