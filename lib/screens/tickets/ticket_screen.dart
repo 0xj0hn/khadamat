@@ -1,6 +1,7 @@
 import 'package:TexBan/utils/models/ticket_model.dart';
 import 'package:TexBan/utils/models/ticket_screen_model.dart';
 import 'package:TexBan/utils/models/tickets_detail_screen_state_model.dart';
+import 'package:TexBan/utils/theme.dart';
 import 'package:TexBan/widgets/appbar.dart';
 import 'package:TexBan/widgets/custom_bubble.dart';
 import 'package:TexBan/widgets/ticket_preview.dart';
@@ -25,7 +26,9 @@ class TicketScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomedAppBar(title: ticket.title),
+      appBar: CustomedAppBar(
+        title: ticket.title,
+      ),
       body: Stack(
         children: [
           GetBuilder<TicketScreenModel>(
@@ -74,19 +77,22 @@ class TicketScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     Expanded(
-                      flex: 8,
-                      child: TextField(
-                        controller: textController,
-                        maxLines: null,
-                        textInputAction: TextInputAction.newline,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "پیامی وارد کنید...",
-                        ),
-                      ),
+                      flex: 9,
+                      child: GetBuilder<ThemeX>(builder: (model) {
+                        return TextField(
+                          controller: textController,
+                          maxLines: null,
+                          style: TextStyle(fontSize: model.fontSize),
+                          textInputAction: TextInputAction.newline,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: "پیامی وارد کنید...",
+                          ),
+                        );
+                      }),
                     ),
                     Expanded(
-                      flex: 1,
+                      flex: 2,
                       child: IconButton(
                         onPressed: () async {
                           if (textController.text.isEmpty) return;
