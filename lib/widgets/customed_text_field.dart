@@ -39,6 +39,7 @@ class CustomedTextField extends StatelessWidget {
       builder: (_) => TextFormField(
         enabled: enabled,
         autofocus: false,
+        autocorrect: false,
         textAlignVertical: TextAlignVertical.top,
         cursorColor: Colors.blue,
         cursorWidth: 1.2,
