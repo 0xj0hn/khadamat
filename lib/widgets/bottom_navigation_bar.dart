@@ -1,5 +1,5 @@
 import 'package:TexBan/screens/home/home_screen.dart';
-import 'package:TexBan/screens/settings_screen.dart';
+import 'package:TexBan/screens/settings/settings_screen.dart';
 import 'package:TexBan/screens/tickets/ticket_screen.dart';
 import 'package:TexBan/screens/tickets/tickets_detail_screen.dart';
 import 'package:TexBan/utils/theme.dart';
@@ -69,7 +69,7 @@ class BottomNavTabView extends StatelessWidget {
         handleAndroidBackButtonPress: true, // Default is true.
         resizeToAvoidBottomInset:
             true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
-        stateManagement: false, // Default is true.
+        stateManagement: true, // Default is true.
         hideNavigationBarWhenKeyboardShows:
             true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
 
