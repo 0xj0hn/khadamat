@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:TexBan/screens/settings/settings_screen.dart';
 import 'package:TexBan/utils/api/user_provider.dart';
 import 'package:TexBan/widgets/drop_down_button.dart';
 import 'package:flutter/material.dart';
@@ -12,13 +13,13 @@ import 'package:TexBan/widgets/customed_text_field.dart';
 class CreateFilePage extends StatelessWidget {
   String? title;
   CreateFilePage({Key? key, this.title = ''}) : super(key: key);
-
+  TextEditingController txtIssueSubject = TextEditingController();
+  TextEditingController phone = TextEditingController();
+  TextEditingController txtContent = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    TextEditingController txtIssueSubject = TextEditingController();
-    TextEditingController phone = TextEditingController();
     TextEditingController txtTitle = TextEditingController(text: title);
-    TextEditingController txtContent = TextEditingController();
+
     Rx<Priority> selectedPriority = Priority.critical.obs;
 
     return Scaffold(
