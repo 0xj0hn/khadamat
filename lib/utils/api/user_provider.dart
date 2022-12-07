@@ -139,14 +139,19 @@ class UserProvider extends GetConnect with ConnectionConfig {
     Response request;
     try {
       request = await get(url, headers: headers);
-      String firstName = request.body["first_name"];
-      String lastName = request.body["last_name"];
-      String phoneNumber = request.body["phone"]["phone"];
-      return {
-        "first_name": firstName,
-        "last_name": lastName,
-        "phone_number": phoneNumber,
-      };
+      if (request.statusCode == 200) {
+        String firstName = request.body["first_name"];
+        String lastName = request.body["last_name"];
+        String phoneNumber = request.body["phone"]["phone"];
+        return {
+          "first_name": firstName,
+          "last_name": lastName,
+          "phone_number": phoneNumber,
+        };
+      } else if (request.statusCode == 401) {
+        await refreshToken();
+        return await getMyInformation();
+      }
     } catch (e) {
       Get.snackbar("وضعیت", "مشکلی پیش آمد!");
     }
