@@ -1,6 +1,8 @@
 import 'dart:ui';
 
+import 'package:TexBan/utils/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomBubble extends StatelessWidget {
   String type;
@@ -43,12 +45,15 @@ class CustomBubble extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: SelectableText(
-                text,
-                style: TextStyle(
-                  color: Theme.of(context).canvasColor,
-                ),
-              ),
+              child: GetBuilder<ThemeX>(builder: (model) {
+                return SelectableText(
+                  text,
+                  style: TextStyle(
+                    fontSize: model.fontSize,
+                    color: Theme.of(context).canvasColor,
+                  ),
+                );
+              }),
             ),
             Padding(
               padding:
