@@ -98,10 +98,12 @@ class LoginPage extends StatelessWidget {
                             },
                             builder: (cnx) {
                               return Scaffold(
+                                resizeToAvoidBottomInset: false,
                                 body: Container(
                                   padding: EdgeInsets.all(30),
                                   child: Center(
                                     child: CustomedTextField(
+                                      keyboardType: TextInputType.number,
                                       controller: codeTxt,
                                       label: "محل قرارگیری کد تایید",
                                       helper: "کد تایید را وارد کنید",
