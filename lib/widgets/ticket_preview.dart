@@ -38,57 +38,67 @@ class TicketPreview extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      ticket.title,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                    Text(ticket.subject),
-                    Text(ticket.description),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Chip(
-                      label: Text(
-                        AppService.convertStatusToPersion(ticket.status),
+                Expanded(
+                  flex: 3,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        ticket.title,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: AppService.convertStatusToColor(ticket.status),
+                          fontSize: 18,
                         ),
                       ),
-                      backgroundColor: AppService.convertStatusToColor(
-                        ticket.status,
-                      ).withOpacity(0.2),
-                    ),
-                    SizedBox(
-                      height: 2,
-                    ),
-                    Chip(
-                      label: Text(
-                        AppService.convertPriorityToPersian(ticket.priority),
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).primaryColor,
-                        ),
-                      ),
-                      backgroundColor:
-                          Theme.of(context).primaryColor.withOpacity(0.2),
-                    ),
-                  ],
-                ),
-                Container(
-                  padding: EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(8),
+                      Text(ticket.subject),
+                      Text(ticket.description),
+                    ],
                   ),
-                  child: Icon(Icons.messenger),
+                ),
+                Expanded(
+                  flex: 3,
+                  child: Column(
+                    children: [
+                      Chip(
+                        label: Text(
+                          AppService.convertStatusToPersion(ticket.status),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color:
+                                AppService.convertStatusToColor(ticket.status),
+                          ),
+                        ),
+                        backgroundColor: AppService.convertStatusToColor(
+                          ticket.status,
+                        ).withOpacity(0.2),
+                      ),
+                      SizedBox(
+                        height: 2,
+                      ),
+                      Chip(
+                        label: Text(
+                          AppService.convertPriorityToPersian(ticket.priority),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                        backgroundColor:
+                            Theme.of(context).primaryColor.withOpacity(0.2),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    padding: EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor.withOpacity(0.2),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Icon(Icons.messenger),
+                  ),
                 ),
               ],
             ),
