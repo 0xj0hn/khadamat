@@ -1,6 +1,6 @@
 import 'package:TexBan/screens/services/financial2_services_screen.dart';
 import 'package:TexBan/screens/services/financial_services_screen.dart';
-import 'package:TexBan/screens/settings_screen.dart';
+import 'package:TexBan/screens/settings/settings_screen.dart';
 import 'package:TexBan/screens/unknown_screen.dart';
 import 'package:TexBan/utils/theme.dart';
 import 'package:TexBan/widgets/appbar.dart';
